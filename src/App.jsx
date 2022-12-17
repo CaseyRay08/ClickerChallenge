@@ -1,6 +1,9 @@
 import React, { useState } from 'react'
 import { HiCurrencyDollar } from 'react-icons/hi'
 import { DiAndroid } from "react-icons/di";
+import { DiApple } from "react-icons/di";
+import { DiCodeigniter } from "react-icons/di";
+
 export const App = () => {
 
   const [clickInput, setClickInput] = useState([])
@@ -25,6 +28,12 @@ export const App = () => {
         break;
       case "DiAndroid":
         iconElement = <DiAndroid {...iconProps} />
+        break;
+      case "DiApple":
+        iconElement = <DiApple {...iconProps} />
+        break;
+      case "DiCodeigniter":
+        iconElement = <DiCodeigniter {...iconProps} />
         break;
     }
     console.log(iconElement)
@@ -56,6 +65,7 @@ export const App = () => {
 
   return (
     <div>
+
       <button onClick={handleUndo} disabled={clickInput.length === 0}>Undo</button>
       <button onClick={handleRedo} disabled={popStorage.length === 0} >Redo</button>
       <button onClick={handleReset} disabled={!clickInput.length && !popStorage.length}>Reset</button>
@@ -63,7 +73,10 @@ export const App = () => {
       <select onChange={e => handleIcon(e)}>
         <option value='HiCurrencyDollar'>HiCurrencyDollar</option>
         <option value='DiAndroid'>DiAndroid</option>
+        <option value='DiApple'>DiApple</option>
+        <option value='DiCodeigniter'>DiCodeigniter</option>
       </select>
+
       <div onClick={e => handleContainer(e)}>
         {clickInput.map((items) => {
           return <div
@@ -72,6 +85,7 @@ export const App = () => {
           </div>
         })}
       </div>
+
     </div>
   )
 }
